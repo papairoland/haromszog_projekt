@@ -9,8 +9,9 @@ namespace ConsoleApp18
             List<string> menupontok = new List<string>();
             menupontok.Add("Kerület számítása");
             menupontok.Add("Terület számítása");
-            menupontok.Add("Pitagorasz tétel");
+            menupontok.Add("Pitagorasz tétel (derékszögű háromszög)");
             menupontok.Add("Általános háromszög");
+            menupontok.Add("Háromszög típus meghatározás");
             menupontok.Add("Kilépés");
             ListazMenu(menupontok);
             Console.WriteLine("Vége!");
@@ -60,6 +61,11 @@ namespace ConsoleApp18
                     MegadottValasz = 4;
                     Szam = true;
                 }
+                else if (key.Key == ConsoleKey.D6)
+                {
+                    MegadottValasz = 5;
+                    Szam = true;
+                }
             }
             while (!Szam);
 
@@ -72,7 +78,7 @@ namespace ConsoleApp18
                 case "Terület számítása":
                     Terulet();
                     break;
-                case "Pitagorasz tétel":
+                case "Pitagorasz tétel (derékszögű háromszög)":
                     Pitagorasz();
                     break;
                 case "Általános háromszög":
@@ -80,6 +86,9 @@ namespace ConsoleApp18
                     break;
                 case "Kilépés":
                     Environment.Exit(0);
+                    break;
+                case "Háromszög típus meghatározás":
+                    TipusMeghatarozas();
                     break;
                 default:
                     break;
@@ -106,12 +115,45 @@ namespace ConsoleApp18
             Console.WriteLine($"A harmadik oldal hossza: {c}");
         }
 
+        //todo Roli feladata
         private static void Terulet()
         {
             Console.WriteLine("Add meg a háromszög alapjához tartozó magasságát! ");
             double magassag = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Add meg a háromszög alapját! ");
             double alap = Convert.ToDouble(Console.ReadLine());
+            double terulet = (alap * magassag) / 2;
+            Console.WriteLine($"A háromszög területe: {terulet}");
+        }
+
+        //todo Roli feladata
+        private static void TipusMeghatarozas()
+        {
+            Console.WriteLine("Írd be a háromszög első oldalát! ");
+            double a = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Írd be a háromszög második oldalát! ");
+            double b = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Írd be a háromszög harmadik oldalát! ");
+            double c = Convert.ToDouble(Console.ReadLine());
+            if (a + b > c && a + c > b && b + c > a)
+            {
+                if (a==b && b==c)
+                {
+                    Console.WriteLine("Egyenlő oldalú háromszög");
+                }
+                else if (a==b || a==c || b == c)
+                {
+                    Console.WriteLine("Egyenlő szárú háromszög");
+                }
+                else
+                {
+                    Console.WriteLine("Általános háromszög");
+                }
+            }
+            else
+            {
+                Console.WriteLine("A háromszög nem létezik (háromszög-egyenlőtlensége)");
+            }
         }
 
         // todo Petra feladata
