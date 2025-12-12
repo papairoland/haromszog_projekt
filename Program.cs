@@ -13,6 +13,7 @@ namespace ConsoleApp18
             menupontok.Add("Általános háromszög");
             menupontok.Add("Háromszög típus meghatározás");
             menupontok.Add("Háromszögbe írható kör sugara (r)");
+            menupontok.Add("Háromszög köré írható kör sugara (R)");
             menupontok.Add("Kilépés");
             ListazMenu(menupontok);
             Console.WriteLine("Vége!");
@@ -72,6 +73,11 @@ namespace ConsoleApp18
                     MegadottValasz = 6;
                     Szam = true;
                 }
+                else if (key.Key == ConsoleKey.D8)
+                {
+                    MegadottValasz = 7;
+                    Szam = true;
+                }
             }
             while (!Szam);
 
@@ -94,7 +100,10 @@ namespace ConsoleApp18
                     TipusMeghatarozas();
                     break;
                 case "Háromszögbe írható kör sugara (r)":
-                    BeleIrtSugar();
+                    BeleIrhatoSugar();
+                    break;
+                case "Háromszög köré írható kör sugara (R)":
+                    KoreIrhatoSugar();
                     break;
                 case "Kilépés":
                     Environment.Exit(0);
@@ -114,7 +123,7 @@ namespace ConsoleApp18
         }
 
         //todo Roli feladata
-        private static void BeleIrtSugar()
+        private static void BeleIrhatoSugar()
         {
             Console.WriteLine("Írd be a háromszög első oldalát! ");
             double a = Convert.ToDouble(Console.ReadLine());
@@ -125,7 +134,24 @@ namespace ConsoleApp18
             double s = (a + b + c) / 2;
             double terulet = Math.Sqrt(s * (s - a) * (s - b) * (s - c));
             double r = terulet / s;
-            Console.WriteLine($"Beírt kör sugara: {Math.Round(r,2)}");
+            Console.WriteLine($"Beírt kör sugara: {Math.Round(r, 2)}");
+        }
+
+        //todo Roli feladata
+
+        private static void KoreIrhatoSugar()
+        {
+            Console.WriteLine("Írd be a háromszög első oldalát! ");
+            double a = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Írd be a háromszög második oldalát! ");
+            double b = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Írd be a háromszög harmadik oldalát! ");
+            double c = Convert.ToDouble(Console.ReadLine());
+            double s = (a + b + c) / 2;
+            double terulet = Math.Sqrt(s * (s - a) * (s - b) * (s - c));
+            double r = (a*b*c) / (4 * terulet);
+            Console.WriteLine($"A háromszög köré írható kör sugara: {Math.Round(r,2)}");
+
         }
 
         // todo Roli feladata
@@ -136,7 +162,7 @@ namespace ConsoleApp18
             Console.WriteLine("Add meg a második oldalt! ");
             double b = Convert.ToDouble(Console.ReadLine());
             double c = Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
-            Console.WriteLine($"A harmadik oldal hossza: {Math.Round(c,2)}");
+            Console.WriteLine($"A harmadik oldal hossza: {Math.Round(c, 2)}");
         }
 
         //todo Roli feladata
@@ -147,7 +173,7 @@ namespace ConsoleApp18
             Console.WriteLine("Add meg a háromszög alapját! ");
             double alap = Convert.ToDouble(Console.ReadLine());
             double terulet = (alap * magassag) / 2;
-            Console.WriteLine($"A háromszög területe: {Math.Round(terulet,2)}");
+            Console.WriteLine($"A háromszög területe: {Math.Round(terulet, 2)}");
         }
 
         //todo Roli feladata
@@ -190,7 +216,7 @@ namespace ConsoleApp18
             Console.WriteLine("Add meg a harmadik oldalt! ");
             double c = Convert.ToDouble(Console.ReadLine());
             double kerulet = a + b + c;
-            Console.WriteLine($"A háromszög kerülete: {Math.Round(kerulet,2)}");
+            Console.WriteLine($"A háromszög kerülete: {Math.Round(kerulet, 2)}");
         }
 
         // todo Petra feladata
@@ -214,4 +240,3 @@ namespace ConsoleApp18
         }
     }
 }
-
