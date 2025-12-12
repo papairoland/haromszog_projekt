@@ -186,7 +186,7 @@ namespace ConsoleApp18
             Console.WriteLine("Add meg az első oldalt! ");
             double a = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Add meg a második oldalt! ");
-            double b = Convert.ToDouble(Console.ReadLine());,
+            double b = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Add meg a harmadik oldalt! ");
             double c = Convert.ToDouble(Console.ReadLine());
             double kerulet = a + b + c;
@@ -214,3 +214,4 @@ namespace ConsoleApp18
         }
     }
 }
+
